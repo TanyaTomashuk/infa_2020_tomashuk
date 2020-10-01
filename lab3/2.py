@@ -23,7 +23,8 @@ ellipse_surface_3 = pygame.Surface((250, 290), pygame.SRCALPHA)
 ellipse(ellipse_surface_3, (191, 209, 201, 130), (91, 111, 140, 40))
 screen.blit(ellipse_surface_3, (-10, 500))
 
-#(x_o, y_o) - the back bottom point of the body rect, h - height of the body rect, dir = +-1, direction of the car (1 - left)
+# (x_o, y_o) - the back top point of the body rect, h - height of the body rect,
+# dir = +-1, direction of the car (1 - left)
 def car(x_o, y_o, h, dir):
     a = h / 50
     ellipse(screen, (0, 0, 0, 255), (x_o - 15 * a, y_o + 35 * a, 30 * a, 10 * a))
@@ -35,10 +36,11 @@ def car(x_o, y_o, h, dir):
     circle(screen, (0, 0, 0, 255), (x_o + dir * 220 * a, y_o + 50 * a), 25 * a)
     circle(screen, (0, 0, 0, 255), (x_o + dir * 50 * a, y_o + 50 * a), 25 * a)
 
+
 car(230, 630, 50, 1)
 
 rect(screen, (240, 248, 250), (400, 20, 120, 480))
-rect(screen,(116, 136, 132), (340, 150, 110, 420))
+rect(screen, (116, 136, 132), (340, 150, 110, 420))
 
 ellipse_surface_4 = pygame.Surface((600, 600), pygame.SRCALPHA)
 ellipse(ellipse_surface_4, (191, 201, 191, 100), (-200, 100, 700, 130))
