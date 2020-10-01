@@ -3,27 +3,19 @@ from pygame.draw import *
 
 pygame.init()
 
-FPS = 30
-screen = pygame.display.set_mode((533, 800))
-rect(screen, (201, 215, 221, 255), (0, 0, 533, 467))
-rect(screen, (91, 111, 108, 255), (0, 467, 533, 333))
-rect(screen, (255, 255, 255, 255), (0, 467, 533, 5))
 
-ellipse_surface_1 = pygame.Surface((250, 290), pygame.SRCALPHA)
-ellipse(ellipse_surface_1, (191, 209, 201, 70), (91, 111, 147, 45))
-screen.blit(ellipse_surface_1, (-60, 450))
+# (x_o, y_o) - the left top point of the left house, h - height of the left house,
+# dir = +-1, direction of the street (1 - as before)
+def street(x_o, y_o, h, dir):
+    a = h / 460
+    rect(screen, (169, 187, 197), (x_o, y_o, dir * 115 * a, 460 * a))
+    rect(screen, (166, 186, 182), (x_o + dir * 140 * a, y_o + 30 * a, dir * 110 * a, 450 * a))
+    rect(screen, (202, 210, 209), (x_o + dir * 60 * a, y_o + 75 * a, dir * 125 * a, 440 * a))
+    rect(screen, (240, 248, 250), (x_o + dir * 380 * a, y_o - 10 * a, dir * 120 * a, 480 * a))
+    rect(screen, (116, 136, 132), (x_o + dir * 320 * a, y_o + 120 * a, dir * 110 * a, 420 * a))
 
-ellipse_surface_2 = pygame.Surface((250, 290), pygame.SRCALPHA)
-ellipse(ellipse_surface_2, (191, 209, 201, 100), (91, 111, 147, 45))
-screen.blit(ellipse_surface_2, (-170, 400))
 
-ellipse(screen, (221, 227, 221, 255), (-30, 610, 700, 300))
-
-ellipse_surface_3 = pygame.Surface((250, 290), pygame.SRCALPHA)
-ellipse(ellipse_surface_3, (191, 209, 201, 130), (91, 111, 140, 40))
-screen.blit(ellipse_surface_3, (-10, 500))
-
-# (x_o, y_o) - the back top point of the body rect, h - height of the body rect,
+# (x_o, y_o) - the back bottom point of the body rect, h - height of the body rect,
 # dir = +-1, direction of the car (1 - left)
 def car(x_o, y_o, h, dir):
     a = h / 50
@@ -37,31 +29,76 @@ def car(x_o, y_o, h, dir):
     circle(screen, (0, 0, 0, 255), (x_o + dir * 50 * a, y_o + 50 * a), 25 * a)
 
 
-car(230, 630, 50, 1)
+FPS = 30
+screen = pygame.display.set_mode((533, 800))
+rect(screen, (91, 111, 108, 255), (0, 550, 533, 250))
 
-rect(screen, (240, 248, 250), (400, 20, 120, 480))
-rect(screen, (116, 136, 132), (340, 150, 110, 420))
+rect(screen, (191, 191, 191), (-10, -10, 410, 210))
+rect(screen, (255, 255, 255), (-10, -10, 410, 210), 3)
 
-ellipse_surface_4 = pygame.Surface((600, 600), pygame.SRCALPHA)
-ellipse(ellipse_surface_4, (191, 201, 191, 100), (-200, 100, 700, 130))
-screen.blit(ellipse_surface_4, (-160, -50))
+rect(screen, (121, 121, 121), (400, -10, 140, 210))
 
-rect(screen, (169, 187, 197), (20, 30, 115, 460))
+rect(screen, (161, 161, 161, 0.2), (0, 0, 50, 188))
 
-ellipse_surface_5 = pygame.Surface((600, 600), pygame.SRCALPHA)
-ellipse(ellipse_surface_5, (191, 201, 191, 100), (0, 100, 700, 130))
-screen.blit(ellipse_surface_5, (100, -100))
+rect_1 = pygame.Surface((800, 800), pygame.SRCALPHA)
+rect(rect_1, (1, 1, 1, 170), (0, 88, 100, 100))
+rect(rect_1, (31, 31, 31, 80), (150, 20, 80, 180))
+rect(rect_1, (1, 1, 1, 100), (250, 0, 200, 200))
+screen.blit(rect_1, (0, 0))
 
-ellipse_surface_6 = pygame.Surface((600, 600), pygame.SRCALPHA)
-ellipse(ellipse_surface_6, (191, 201, 191, 110), (-200, 400, 650, 110))
-screen.blit(ellipse_surface_6, (-130, -80))
+rect_2 = pygame.Surface((800, 800), pygame.SRCALPHA)
+rect(rect_2, (1, 1, 1, 130), (180, 100, 100, 100))
+rect(rect_2, (1, 1, 1, 150), (290, 0, 100, 200))
+rect(rect_2, (1, 1, 1, 120), (320, 0, 100, 200))
+rect(rect_2, (1, 1, 1, 130), (480, 0, 100, 200))
+screen.blit(rect_2, (0, 0))
 
-rect(screen, (166, 186, 182), (160, 60, 110, 450))
-rect(screen, (202, 210, 209), (80, 105, 125, 440))
+ellipse_1 = pygame.Surface((800, 800), pygame.SRCALPHA)
+ellipse(ellipse_1, (1, 1, 1, 70), (130, -20, 600, 100))
+ellipse(ellipse_1, (1, 1, 1, 80), (430, 100, 600, 100))
+ellipse(ellipse_1, (1, 1, 1, 80), (-350, 140, 620, 100))
+screen.blit(ellipse_1, (0, 0))
 
-ellipse_surface_7 = pygame.Surface((600, 600), pygame.SRCALPHA)
-ellipse(ellipse_surface_7, (191, 201, 195, 100), (50, 300, 600, 120))
-screen.blit(ellipse_surface_7, (100, -100))
+ellipse_2 = pygame.Surface((800, 800), pygame.SRCALPHA)
+ellipse(ellipse_2, (1, 1, 1, 30), (-300, -20, 650, 100))
+screen.blit(ellipse_2, (0, 0))
+
+ellipse_3 = pygame.Surface((800, 800), pygame.SRCALPHA)
+ellipse(ellipse_3, (1, 1, 1, 50), (90, 20, 480, 100))
+screen.blit(ellipse_3, (0, 0))
+
+rect(screen, (255, 255, 255), (400, -10, 140, 210), 3)
+
+rect(screen, (211, 218, 218), (190, 170, 500, 380))
+rect(screen, (255, 255, 255), (190, 170, 500, 380), 3)
+
+ellipse_4 = pygame.Surface((800, 800), pygame.SRCALPHA)
+ellipse(ellipse_4, (181, 191, 191, 100), (120, 0, 500, 100))
+screen.blit(ellipse_4, (205, 225))
+
+street(570, 200, 350, -1)
+
+rect(screen, (201, 215, 221), (-10, 190, 300, 390))
+rect(screen, (255, 255, 255), (-10, 190, 300, 390), 3)
+
+street(-100, 223, 350, 1)
+
+ellipse_5 = pygame.Surface((800, 800), pygame.SRCALPHA)
+ellipse(ellipse_5, (201, 215, 221, 40), (50, 0, 235, 50))
+ellipse(ellipse_5, (201, 215, 221, 30), (100, 180, 192, 50))
+screen.blit(ellipse_5, (0, 225))
+
+car(110, 600, 10, -1)
+car(290, 620, 15, -1)
+car(383, 590, 10, -1)
+car(495, 630, 15, -1)
+car(40, 665, 35, 1)
+car(480, 710, 40, -1)
+
+for i in range(1, 200, 4):
+    ellipse_i = pygame.Surface((800, 800), pygame.SRCALPHA)
+    ellipse(ellipse_i, (250, 250, 250, 10 - i / 100), (200 - (i - 1) / 2, 200 - (i - 1) / 2, 2 * i, i))
+    screen.blit(ellipse_i, (0, 500))
 
 pygame.display.update()
 clock = pygame.time.Clock()
