@@ -95,9 +95,9 @@ car(495, 630, 15, -1)
 car(40, 665, 35, 1)
 car(480, 710, 40, -1)
 
-for i in range(1, 400, 4):
+for i in range(1, 200, 4):
     ellipse_i = pygame.Surface((800, 800), pygame.SRCALPHA)
-    ellipse(ellipse_i, (255, 255, 255, 10 - i / 100), (200 - (i - 1) / 2, 200 - (i - 1) / 2, 2 * i, i))
+    ellipse(ellipse_i, (250, 250, 250, 10 - i / 100), (200 - (i - 1) / 2, 200 - (i - 1) / 2, 2 * i, i))
     screen.blit(ellipse_i, (0, 500))
 
 pygame.display.update()
