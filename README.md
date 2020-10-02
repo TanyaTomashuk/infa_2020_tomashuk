@@ -1,2 +1,3 @@
 # infa_2020_tomashuk
-it's test project
+picture initial 43db71b12b3347a1404af77530690918a3f70713
+picture upgrade 55b05f382dd4704c8accccb6bd5a7b6af25600b1
