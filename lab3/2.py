@@ -3,10 +3,14 @@ from pygame.draw import *
 
 pygame.init()
 
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
 
-# (x_o, y_o) - the left top point of the left house, h - height of the left house,
-# dir = +-1, direction of the street (1 - as before)
 def street(x_o, y_o, h, dir):
+    '''
+    (x_o, y_o) - the left top point of the left house, h - height of the left house,
+    dir = +-1, direction of the street (1 - as before)
+    '''
     a = h / 460
     rect(screen, (169, 187, 197), (x_o, y_o, dir * 115 * a, 460 * a))
     rect(screen, (166, 186, 182), (x_o + dir * 140 * a, y_o + 30 * a, dir * 110 * a, 450 * a))
@@ -15,18 +19,21 @@ def street(x_o, y_o, h, dir):
     rect(screen, (116, 136, 132), (x_o + dir * 320 * a, y_o + 120 * a, dir * 110 * a, 420 * a))
 
 
-# (x_o, y_o) - the back bottom point of the body rect, h - height of the body rect,
-# dir = +-1, direction of the car (1 - left)
+
 def car(x_o, y_o, h, dir):
+    '''
+    (x_o, y_o) - the back bottom point of the body rect, h - height of the body rect,
+    dir = +-1, direction of the car (1 - left)
+    '''
     a = h / 50
     ellipse(screen, (0, 0, 0, 255), (x_o - 15 * a, y_o + 35 * a, 30 * a, 10 * a))
-    rect(screen, (50, 204, 255, 255), (x_o, y_o, dir * 260 * a, h))
-    rect(screen, (50, 204, 255, 255), (x_o + dir * 40 * a, y_o - 40 * a, dir * 130 * a, 40 * a))
-    rect(screen, (240, 240, 250, 255), (x_o + dir * 50 * a, y_o - 30 * a, dir * 45 * a, 30 * a))
-    rect(screen, (240, 240, 250, 255), (x_o + dir * 120 * a, y_o - 30 * a, dir * 48 * a, 30 * a))
-    rect(screen, (240, 255, 240, 255), (x_o + dir * 248 * a, y_o + 2 * a, dir * 10 * a, 10 * a))
-    circle(screen, (0, 0, 0, 255), (x_o + dir * 220 * a, y_o + 50 * a), 25 * a)
-    circle(screen, (0, 0, 0, 255), (x_o + dir * 50 * a, y_o + 50 * a), 25 * a)
+    rect(screen, (50, 204, 255), (x_o, y_o, dir * 260 * a, h))
+    rect(screen, (50, 204, 255), (x_o + dir * 40 * a, y_o - 40 * a, dir * 130 * a, 40 * a))
+    rect(screen, (240, 240, 250), (x_o + dir * 50 * a, y_o - 30 * a, dir * 45 * a, 30 * a))
+    rect(screen, (240, 240, 250), (x_o + dir * 120 * a, y_o - 30 * a, dir * 48 * a, 30 * a))
+    rect(screen, (240, 255, 240), (x_o + dir * 248 * a, y_o + 2 * a, dir * 10 * a, 10 * a))
+    circle(screen, BLACK, (x_o + dir * int(220 * a), y_o + int(50 * a)), int(25 * a))
+    circle(screen, BLACK, (x_o + dir * int(50 * a), y_o + int(50 * a)), int(25 * a))
 
 
 FPS = 30
@@ -34,7 +41,7 @@ screen = pygame.display.set_mode((533, 800))
 rect(screen, (91, 111, 108, 255), (0, 550, 533, 250))
 
 rect(screen, (191, 191, 191), (-10, -10, 410, 210))
-rect(screen, (255, 255, 255), (-10, -10, 410, 210), 3)
+rect(screen, WHITE, (-10, -10, 410, 210), 3)
 
 rect(screen, (121, 121, 121), (400, -10, 140, 210))
 
@@ -67,10 +74,10 @@ ellipse_3 = pygame.Surface((800, 800), pygame.SRCALPHA)
 ellipse(ellipse_3, (1, 1, 1, 50), (90, 20, 480, 100))
 screen.blit(ellipse_3, (0, 0))
 
-rect(screen, (255, 255, 255), (400, -10, 140, 210), 3)
+rect(screen, WHITE, (400, -10, 140, 210), 3)
 
 rect(screen, (211, 218, 218), (190, 170, 500, 380))
-rect(screen, (255, 255, 255), (190, 170, 500, 380), 3)
+rect(screen, WHITE, (190, 170, 500, 380), 3)
 
 ellipse_4 = pygame.Surface((800, 800), pygame.SRCALPHA)
 ellipse(ellipse_4, (181, 191, 191, 100), (120, 0, 500, 100))
@@ -79,7 +86,7 @@ screen.blit(ellipse_4, (205, 225))
 street(570, 200, 350, -1)
 
 rect(screen, (201, 215, 221), (-10, 190, 300, 390))
-rect(screen, (255, 255, 255), (-10, 190, 300, 390), 3)
+rect(screen, WHITE, (-10, 190, 300, 390), 3)
 
 street(-100, 223, 350, 1)
 
